@@ -4,9 +4,12 @@ import waitTurnMessage from '../data/waitTurnMessage'
 function determineMessageContent(
     winner: boolean,
     tie: boolean,
-    turnIsPlayer: boolean
+    turn: number,
+    player: number
 ): string {
     let message: string = ''
+
+    const turnIsPlayer: boolean = turn === player
 
     if (winner) {
         message = `You ${turnIsPlayer ? 'win' : 'lose'}!`
