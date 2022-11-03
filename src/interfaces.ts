@@ -61,9 +61,9 @@ interface TieProp {
     tie: boolean
 }
 
-interface BoardProps extends PointsProp, UpdateCurrentStatesProp, TurnProp, PlayerProp, WinnerProp {}
+interface BoardProps extends PointsProp, UpdateCurrentStatesProp, TurnProp, PlayerProp, WinnerProp, TieProp {}
 
-interface CellProps extends IdentityProp, UpdateCurrentStatesProp, TurnProp, PlayerProp, WinnerProp {}
+interface CellProps extends IdentityProp, UpdateCurrentStatesProp, TurnProp, PlayerProp, WinnerProp, PointsProp, TieProp {}
 
 interface MessageProps extends WinnerProp, TieProp, TurnProp, PlayerProp {}
 

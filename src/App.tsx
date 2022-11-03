@@ -52,6 +52,7 @@ function App() {
                 turn={turn} 
                 player={player} 
                 winner={winner}
+                tie={tie}
             />
 
             <ButtonArea 

@@ -7,7 +7,8 @@ function Board({
     updateCurrentStates,
     player,
     turn,
-    winner
+    winner,
+    tie
 }: BoardProps): JSX.Element {
     const cells: ReactElement[] = points.map((
         _: number, 
@@ -21,6 +22,8 @@ function Board({
             turn={turn} 
             player={player} 
             winner={winner}
+            points={points}
+            tie={tie}
         />
     })
 
