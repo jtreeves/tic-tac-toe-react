@@ -19,7 +19,7 @@ function App() {
     const [message, setMessage] = useState<string>('Would you like to play a game?')
 
     const updateCurrentStates = (
-        index: number, 
+        index: number,
         point: number
     ): void => {
         const updatedPoints: number[] = [...points]
@@ -41,10 +41,17 @@ function App() {
             <Title />
             {player && <PlayerReminder player={player} />}
             <Message message={message} />
-            {player && <Board points={points} />}
-            {!turn && !player && <StartButton />}
-            {turn && !player && <OptionButtons />}
-            {turn && player && <ResetButton />}
+            {player && <Board points={points} updateCurrentStates={updateCurrentStates} turn={turn} player={player} />}
+            {!turn && !player && <StartButton setTurn={setTurn} />}
+            {turn && !player && <OptionButtons setPlayer={setPlayer} />}
+            {turn && player && <ResetButton 
+                setPoints={setPoints}
+                setWinner={setWinner}
+                setTie={setTie}
+                setTurn={setTurn}
+                setPlayer={setPlayer}
+                setMessage={setMessage}
+            />}
         </>
     )
 }

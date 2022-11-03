@@ -1,12 +1,11 @@
-import getPoints from '../accessors/getPoints'
 import findEmptyIndexInNearlyFullCombo from './findEmptyIndexInNearlyFullCombo'
 import findCellByIndex from './findCellByIndex'
 import selectRandomEmptyCell from './selectRandomEmptyCell'
 
 function selectBestCell(
-    opponent: number
+    opponent: number,
+    points: number[]
 ): HTMLElement | null {
-    const points: number[] = getPoints()
     const xEmpty: number = findEmptyIndexInNearlyFullCombo(points, 1)
     const oEmpty: number = findEmptyIndexInNearlyFullCombo(points, -1)
 

@@ -1,6 +1,14 @@
-function StartButton(): JSX.Element {
+import { SetTurnProp } from '../interfaces'
+
+function StartButton({
+    setTurn
+}: SetTurnProp): JSX.Element {
+    const handleClick = (): void => {
+        setTurn(1)
+    }
+
     return (
-        <button>
+        <button onClick={handleClick}>
             Start
         </button>
     )

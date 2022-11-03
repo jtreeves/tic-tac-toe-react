@@ -1,17 +1,20 @@
 import { ReactElement } from 'react'
-import { PointsProp } from '../interfaces'
+import { BoardProps } from '../interfaces'
 import Cell from './Cell'
 
 function Board({
-    points
-}: PointsProp): JSX.Element {
+    points,
+    updateCurrentStates,
+    player,
+    turn
+}: BoardProps): JSX.Element {
     const cells: ReactElement[] = points.map((
         _: number, 
         index: number
     ): ReactElement => {
         const id: string = 'square-' + index
 
-        return <Cell id={id} />
+        return <Cell id={id} updateCurrentStates={updateCurrentStates} turn={turn} player={player} />
     })
 
     return (
