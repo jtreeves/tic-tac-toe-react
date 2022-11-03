@@ -9,6 +9,7 @@ import ResetButton from './components/ResetButton'
 import checkIfTie from './utilities/checkIfTie'
 import checkIfWinner from './utilities/checkIfWinner'
 import determineMessageContent from './utilities/determineMessageContent'
+import './styles.css'
 
 function App() {
     const [points, setPoints] = useState<number[]>(Array(9).fill(0))
