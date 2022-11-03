@@ -43,7 +43,7 @@ interface SetPointsProp {
     setPoints: Dispatch<SetStateAction<number[]>>
 }
 
-interface SetAllStateProps extends SetPointsProp, SetPlayerProp, SetTurnProp, SetTieProp, SetWinnerProp {}
+interface SetAllStateProps extends SetPointsProp, SetPlayerProp, SetTurnProp, SetTieProp, SetWinnerProp, TurnProp, PlayerProp {}
 
 interface UpdateCurrentStatesFunction {
     (index: number, point: number): void
@@ -61,9 +61,9 @@ interface TieProp {
     tie: boolean
 }
 
-interface BoardProps extends PointsProp, UpdateCurrentStatesProp, TurnProp, PlayerProp {}
+interface BoardProps extends PointsProp, UpdateCurrentStatesProp, TurnProp, PlayerProp, WinnerProp {}
 
-interface CellProps extends IdentityProp, UpdateCurrentStatesProp, TurnProp, PlayerProp {}
+interface CellProps extends IdentityProp, UpdateCurrentStatesProp, TurnProp, PlayerProp, WinnerProp {}
 
 interface MessageProps extends WinnerProp, TieProp, TurnProp, PlayerProp {}
 

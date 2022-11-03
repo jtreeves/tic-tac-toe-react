@@ -6,7 +6,8 @@ function Board({
     points,
     updateCurrentStates,
     player,
-    turn
+    turn,
+    winner
 }: BoardProps): JSX.Element {
     const cells: ReactElement[] = points.map((
         _: number, 
@@ -14,13 +15,21 @@ function Board({
     ): ReactElement => {
         const id: string = 'square-' + index
 
-        return <Cell id={id} updateCurrentStates={updateCurrentStates} turn={turn} player={player} />
+        return <Cell 
+            id={id} 
+            updateCurrentStates={updateCurrentStates} 
+            turn={turn} 
+            player={player} 
+            winner={winner}
+        />
     })
 
     return (
-        <section>
-            {cells}
-        </section>
+        <>
+            {player && <section>
+                {cells}
+            </section>}
+        </>
     )
 }
 

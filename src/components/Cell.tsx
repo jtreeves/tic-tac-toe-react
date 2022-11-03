@@ -6,12 +6,13 @@ function Cell({
     id,
     updateCurrentStates,
     turn,
-    player
+    player,
+    winner
 }: CellProps): JSX.Element {
     const [text, setText] = useState<string>('')
 
     const handleClick = (): void => {
-        if (text === '' && player === turn) {
+        if (text === '' && player === turn && !winner) {
             const index: number = extractIndexFromId(id)
             const newText: string = turn === 1 ? 'X' : 'O'
             setText(newText)

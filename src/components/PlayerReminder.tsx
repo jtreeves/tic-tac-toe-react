@@ -7,9 +7,11 @@ function PlayerReminder({
     const reminder: string = `You are playing ${text}`
 
     return (
-        <h2>
-            {reminder}
-        </h2>
+        <>
+            {player && <h2>
+                {reminder}
+            </h2>}
+        </>
     )
 }
 

@@ -3,9 +3,7 @@ import Title from './components/Title'
 import PlayerReminder from './components/PlayerReminder'
 import Message from './components/Message'
 import Board from './components/Board'
-import StartButton from './components/StartButton'
-import OptionButtons from './components/OptionButtons'
-import ResetButton from './components/ResetButton'
+import ButtonArea from './components/ButtonArea'
 import checkIfTie from './utilities/checkIfTie'
 import checkIfWinner from './utilities/checkIfWinner'
 import './styles.css'
@@ -36,23 +34,35 @@ function App() {
     return (
         <>
             <Title />
-            {player && <PlayerReminder player={player} />}
+
+            <PlayerReminder 
+                player={player} 
+            />
+
             <Message
                 player={player}
                 turn={turn}
                 winner={winner}
                 tie={tie}
             />
-            {player && <Board points={points} updateCurrentStates={updateCurrentStates} turn={turn} player={player} />}
-            {!turn && !player && <StartButton setTurn={setTurn} />}
-            {turn && !player && <OptionButtons setPlayer={setPlayer} />}
-            {turn && player && <ResetButton 
-                setPoints={setPoints}
-                setWinner={setWinner}
-                setTie={setTie}
-                setTurn={setTurn}
+
+            <Board 
+                points={points} 
+                updateCurrentStates={updateCurrentStates} 
+                turn={turn} 
+                player={player} 
+                winner={winner}
+            />
+
+            <ButtonArea 
+                player={player}
+                turn={turn}
                 setPlayer={setPlayer}
-            />}
+                setTurn={setTurn}
+                setTie={setTie}
+                setWinner={setWinner}
+                setPoints={setPoints}
+            />
         </>
     )
 }
