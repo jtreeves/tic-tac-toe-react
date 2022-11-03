@@ -8,7 +8,6 @@ import OptionButtons from './components/OptionButtons'
 import ResetButton from './components/ResetButton'
 import checkIfTie from './utilities/checkIfTie'
 import checkIfWinner from './utilities/checkIfWinner'
-import determineMessageContent from './utilities/determineMessageContent'
 import './styles.css'
 
 function App() {
@@ -17,7 +16,6 @@ function App() {
     const [turn, setTurn] = useState<number>(0)
     const [tie, setTie] = useState<boolean>(false)
     const [winner, setWinner] = useState<boolean>(false)
-    const [message, setMessage] = useState<string>('Would you like to play a game?')
 
     const updateCurrentStates = (
         index: number,
@@ -28,20 +26,23 @@ function App() {
         const updatedTie: boolean = checkIfTie(updatedPoints)
         const updatedWinner: boolean = checkIfWinner(updatedPoints)
         const updatedTurn: number = !updatedWinner && !updatedTie ? turn * -1 : turn
-        const updatedMessage: string = determineMessageContent(updatedWinner, updatedTie, updatedTurn, player)
 
         setPoints(updatedPoints)
         setTie(updatedTie)
         setWinner(updatedWinner)
         setTurn(updatedTurn)
-        setMessage(updatedMessage)
     }
 
     return (
         <>
             <Title />
             {player && <PlayerReminder player={player} />}
-            <Message message={message} />
+            <Message
+                player={player}
+                turn={turn}
+                winner={winner}
+                tie={tie}
+            />
             {player && <Board points={points} updateCurrentStates={updateCurrentStates} turn={turn} player={player} />}
             {!turn && !player && <StartButton setTurn={setTurn} />}
             {turn && !player && <OptionButtons setPlayer={setPlayer} />}
@@ -51,7 +52,6 @@ function App() {
                 setTie={setTie}
                 setTurn={setTurn}
                 setPlayer={setPlayer}
-                setMessage={setMessage}
             />}
         </>
     )

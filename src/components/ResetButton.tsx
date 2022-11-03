@@ -1,7 +1,6 @@
 import { SetAllStateProps } from '../interfaces'
 
 function ResetButton({
-    setMessage,
     setPlayer,
     setTurn,
     setTie,
@@ -14,7 +13,6 @@ function ResetButton({
         setTurn(0)
         setTie(false)
         setWinner(false)
-        setMessage('Would you like to play a game?')
     }
 
     return (

@@ -31,10 +31,6 @@ interface SetTurnProp {
     setTurn: Dispatch<SetStateAction<number>>
 }
 
-interface SetMessageProp {
-    setMessage: Dispatch<SetStateAction<string>>
-}
-
 interface SetWinnerProp {
     setWinner: Dispatch<SetStateAction<boolean>>
 }
@@ -47,7 +43,7 @@ interface SetPointsProp {
     setPoints: Dispatch<SetStateAction<number[]>>
 }
 
-interface SetAllStateProps extends SetPointsProp, SetPlayerProp, SetTurnProp, SetMessageProp, SetTieProp, SetWinnerProp {}
+interface SetAllStateProps extends SetPointsProp, SetPlayerProp, SetTurnProp, SetTieProp, SetWinnerProp {}
 
 interface UpdateCurrentStatesFunction {
     (index: number, point: number): void
@@ -57,9 +53,19 @@ interface UpdateCurrentStatesProp {
     updateCurrentStates: UpdateCurrentStatesFunction
 }
 
+interface WinnerProp {
+    winner: boolean
+}
+
+interface TieProp {
+    tie: boolean
+}
+
 interface BoardProps extends PointsProp, UpdateCurrentStatesProp, TurnProp, PlayerProp {}
 
 interface CellProps extends IdentityProp, UpdateCurrentStatesProp, TurnProp, PlayerProp {}
+
+interface MessageProps extends WinnerProp, TieProp, TurnProp, PlayerProp {}
 
 export type {
     PointsProp,
@@ -70,5 +76,6 @@ export type {
     SetTurnProp,
     SetAllStateProps,
     BoardProps,
-    CellProps
+    CellProps,
+    MessageProps
 }
